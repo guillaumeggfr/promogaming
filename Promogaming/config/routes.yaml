@@ -1,0 +1,10 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+api_login_check:
+    path: /api/login_check
+
+cheapshark:
+    path:     /cheapshark
+    controller: App\Controller\CheapShark\CheapsharkController::index
+    methods: GET

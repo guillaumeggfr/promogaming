@@ -1,0 +1,298 @@
+parameters:
+    data: [
+        https://images.igdb.com/igdb/image/upload/t_cover_big/co2cku.jpg,
+        https://images.igdb.com/igdb/image/upload/t_cover_big/co2cku.jpg,
+        https://images.igdb.com/igdb/image/upload/t_cover_big/co2jfc.jpg,
+        https://images.igdb.com/igdb/image/upload/t_cover_big/co304d.jpg,
+        https://images.igdb.com/igdb/image/upload/t_cover_big/co2m8v.jpg,
+        https://images.igdb.com/igdb/image/upload/t_cover_big/co1r65.jpg,
+        https://images.igdb.com/igdb/image/upload/t_cover_big/co1rsd.jpg,
+        https://images.igdb.com/igdb/image/upload/t_cover_big/co2lby.jpg,
+        https://images.igdb.com/igdb/image/upload/t_cover_big/co2kjx.jpg
+    ]
+
+
+App\Entity\User:
+    user1:
+        username: 'Romain'
+        roles: [ROLE_ADMIN]
+        password: '\$2y\$13\$ys9UOPA9qevNRPvFl.x4IOgmlEqEWlKf9z9AxsT3nIlIsWrOyqt3q'
+        email: 'Romain@pog.com'
+        createdAt: '<dateTimeBetween("-4 years", "now")>'
+        tags: '[@tag*, @tag*, @tag*]'
+
+
+    user2:
+        username: 'Damien'
+        roles: [ROLE_ADMIN]
+        password: '\$2y\$13\$ys9UOPA9qevNRPvFl.x4IOgmlEqEWlKf9z9AxsT3nIlIsWrOyqt3q'
+        email: 'Damien@pog.com'
+        createdAt: '<dateTimeBetween("-4 years", "now")>'
+        tags: '[@tag*, @tag*, @tag*]'
+
+    user3:
+        username: 'Jimmy'
+        roles: [ROLE_ADMIN]
+        password: '\$2y\$13\$ys9UOPA9qevNRPvFl.x4IOgmlEqEWlKf9z9AxsT3nIlIsWrOyqt3q'
+        email: 'Jimmy@pog.com'
+        createdAt: '<dateTimeBetween("-4 years", "now")>'
+        tags: '[@tag*, @tag*, @tag*]'
+
+    
+    user4:
+        username: 'Micka'
+        roles: [ROLE_ADMIN]
+        password: '\$2y\$13\$ys9UOPA9qevNRPvFl.x4IOgmlEqEWlKf9z9AxsT3nIlIsWrOyqt3q'
+        email: 'Micka@pog.com'
+        createdAt: '<dateTimeBetween("-4 years", "now")>'
+        tags: '[@tag*, @tag*, @tag*]'
+    
+
+    user5:
+        username: 'Guillaume'
+        roles: [ROLE_ADMIN]
+        password: '\$2y\$13\$ys9UOPA9qevNRPvFl.x4IOgmlEqEWlKf9z9AxsT3nIlIsWrOyqt3q'
+        email: 'Guillaume@pog.com'
+        createdAt: '<dateTimeBetween("-4 years", "now")>'
+        tags: '[@tag*, @tag*, @tag*]'
+
+    user6:
+        username: 'momolafrite'
+        roles: [ROLE_USER]
+        password: '\$2y\$13\$ys9UOPA9qevNRPvFl.x4IOgmlEqEWlKf9z9AxsT3nIlIsWrOyqt3q'
+        email: 'momo@pog.com'
+        createdAt: '<dateTimeBetween("-4 years", "now")>'
+        tags: '[@tag*, @tag*, @tag*]'
+
+    user7:
+        username: 'Jerome'
+        roles: [ROLE_USER]
+        password: '\$2y\$13\$ys9UOPA9qevNRPvFl.x4IOgmlEqEWlKf9z9AxsT3nIlIsWrOyqt3q'
+        email: 'whyuask@pog.com'
+        createdAt: '<dateTimeBetween("-4 years", "now")>'
+        tags: '[@tag*, @tag*, @tag*]'
+
+App\Entity\Tag:
+    tag1:
+        name: 'COMBAT'
+
+    tag2:
+        name: 'Rail shooter'
+
+    tag3:
+        name: 'TPS'
+
+    tag4:
+        name: 'FPS'
+
+    tag5:
+        name: 'RPG'
+    
+    tag6:
+        name: 'MUSIQUE'
+
+    tag7:
+        name: 'PUZZLE'
+
+    tag8:
+        name: 'AVENTURE'
+
+    tag9:
+        name: 'HORREUR'
+
+    tag10:
+        name: 'INFILTRATION'
+
+    tag11:
+        name: 'SURVIVAL'
+
+    tag12:
+        name: 'SIMULATION'
+
+    tag13:
+        name: 'ROGUE-LIKE'
+
+    tag14:
+        name: 'ACTION'
+
+    tag15:
+        name: 'GESTION'
+   
+    tag16:
+        name: 'COURSE'
+
+    tag17:
+        name: 'STRATEGIE'
+
+    tag18:
+        name: 'SPORT'
+
+    tag19:
+        name: 'RYTHME'
+
+App\Entity\Plateform:
+    plateform1:
+        name: 'STEAM'
+        isActive: 1
+    plateform2:
+        name: 'ORIGIN'
+        isActive: 1
+    plateform3:
+        name: 'GOG'
+        isActive: 1
+    plateform4:
+        name: 'UPLAY'
+        isActive: 1
+    plateform5:
+        name: 'EPICGAMES'
+        isActive: 1
+    plateform6:
+        name: 'BATTLENET'
+        isActive: 0
+
+App\Entity\Game:
+    game1:
+        name: 'Minecraft'
+        description: '<realText()>'
+        game_id_igdb: '<numberBetween(1, 50)>'
+        tags: '[@tag*, @tag*, @tag*]'
+    game2:
+        name: 'Grand Theft Auto V'
+        description: '<realText()>'
+        game_id_igdb: '<numberBetween(1, 50)>'
+        tags: '[@tag*, @tag*, @tag*]'
+    game3:
+        name: 'Tetris'
+        description: '<realText()>'
+        game_id_igdb: '<numberBetween(1, 50)>'
+        tags: '[@tag*, @tag*, @tag*]'
+    game4:
+        name: 'WiiSports'
+        description: '<realText()>'
+        game_id_igdb: '<numberBetween(1, 50)>'
+        tags: '[@tag*, @tag*, @tag*]'
+    game5:
+        name: 'Terraria'
+        description: '<realText()>'
+        game_id_igdb: '<numberBetween(1, 50)>'
+        tags: '[@tag*, @tag*, @tag*]'
+    game6:
+        name: 'Diablo III'
+        description: '<realText()>'
+        game_id_igdb: '<numberBetween(1, 50)>'
+        tags: '[@tag*, @tag*, @tag*]'
+    game7:
+        name: 'Call of Duty: Modern Warfare 3'
+        description: '<realText()>'
+        game_id_igdb: '<numberBetween(1, 50)>'
+        tags: '[@tag*, @tag*, @tag*]'
+    game8:
+        name: 'Call of Duty: Black Ops'
+        description: '<realText()>'
+        game_id_igdb: '<numberBetween(1, 50)>'
+        tags: '[@tag*, @tag*, @tag*]'
+    game9:
+        name: 'Pokémon Rouge'
+        description: '<realText()>'
+        game_id_igdb: '<numberBetween(1, 50)>'
+        tags: '[@tag*, @tag*, @tag*]'
+    game10:
+        name: 'Animal Crossing: New Horizons'
+        description: '<realText()>'
+        game_id_igdb: '<numberBetween(1, 50)>'
+        tags: '[@tag*, @tag*, @tag*]'
+    game11:
+        name: 'Red Dead Redemption II'
+        description: '<realText()>'
+        game_id_igdb: '<numberBetween(1, 50)>'
+        tags: '[@tag*, @tag*, @tag*]'
+    game12:
+        name: 'Super Mario Bros.'
+        description: '<realText()>'
+        game_id_igdb: '<numberBetween(1, 50)>'
+        tags: '[@tag*, @tag*, @tag*]'
+    game13:
+        name: 'Mario Kart 8/Deluxe'
+        description: '<realText()>'
+        game_id_igdb: '<numberBetween(1, 50)>'
+        tags: '[@tag*, @tag*, @tag*]'
+    game14:
+        name: 'Fallout 4'
+        description: '<realText()>'
+        game_id_igdb: '<numberBetween(1, 50)>'
+        tags: '[@tag*, @tag*, @tag*]'
+    game15:
+        name: 'Space Armada'
+        description: '<realText()>'
+        game_id_igdb: '<numberBetween(1, 50)>'
+        tags: '[@tag*, @tag*, @tag*]'
+    game16:
+        name: 'Kung-Fu Master'
+        description: '<realText()>'
+        game_id_igdb: '<numberBetween(1, 50)>'
+        tags: '[@tag*, @tag*, @tag*]'
+    game17:
+        name: 'Halo 2'
+        description: '<realText()>'
+        game_id_igdb: '<numberBetween(1, 50)>'
+        tags: '[@tag*, @tag*, @tag*]'
+    game18:
+        name: "Marvel's Spider-Man"
+        description: '<realText()>'
+        game_id_igdb: '<numberBetween(1, 50)>'
+        tags: '[@tag*, @tag*, @tag*]'
+    game19:
+        name: 'Borderlands 2'
+        description: '<realText()>'
+        game_id_igdb: '<numberBetween(1, 50)>'
+        tags: '[@tag*, @tag*, @tag*]'
+    game20:
+        name: 'Grand Theft Auto: San Andreas'
+        description: '<realText()>'
+        game_id_igdb: '<numberBetween(1, 50)>'
+        tags: '[@tag*, @tag*, @tag*]'
+    game21:
+        name: 'Les Sims 2'
+        description: '<realText()>'
+        game_id_igdb: '<numberBetween(1, 50)>'
+        tags: '[@tag*, @tag*, @tag*]'
+    game22:
+        name: 'The Legend of Zelda: Breath of the Wild'
+        description: '<realText()>'
+        game_id_igdb: '<numberBetween(1, 50)>'
+        tags: '[@tag*, @tag*, @tag*]'
+    game23:
+        name: 'Animal Crossing: New Horizons'
+        description: '<realText()>'
+        game_id_igdb: '<numberBetween(1, 50)>'
+        tags: '[@tag*, @tag*, @tag*]'
+    game24:
+        name: 'Call of Duty: Black Ops II'
+        description: '<realText()>'
+        game_id_igdb: '<numberBetween(1, 50)>'
+        tags: '[@tag*, @tag*, @tag*]'
+    game25:
+        name: 'The Witcher 3: Wild Hunt'
+        description: '<realText()>'
+        game_id_igdb: '<numberBetween(1, 50)>'
+        tags: '[@tag*, @tag*, @tag*]'
+    game26:
+        name: 'The Elder Scrolls V: Skyrim'
+        description: '<realText()>'
+        game_id_igdb: '<numberBetween(1, 50)>'
+        tags: '[@tag*, @tag*, @tag*]' 
+
+App\Entity\Image:
+    Image_{1..250}:
+        url: '<($data[array_rand($data, 1)])>'
+        name: '<firstName()>'
+        game: '@game*'
+
+App\Entity\PlateformGame:
+    PlateformGame_{1..100}:
+        initial_price: '<numberBetween(50, 100)>'
+        actual_price: '<numberBetween(1, 50)>'
+        reduce: '<((($initial_price - $actual_price) / $initial_price) * 100)>'
+        is_active: '1'
+        plateform: '@plateform*'
+        game: '@game*'

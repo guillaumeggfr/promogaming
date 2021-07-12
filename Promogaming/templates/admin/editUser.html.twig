@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+
+{% block body %}
+<div class="ml-4">
+    <h1>Modification de l'utilisateur</h1>
+
+ {{ form_start(form) }}
+<div class="w-25 ">
+{{form_row(form.username)}}
+{{form_row(form.roles)}}
+</div>
+
+<button class="btn btn-success">Valider</button>
+{{ form_end(form) }}
+<form method="GET" action="{{ path('admin_user_index') }}">
+    <button class="btn btn-info">Retour à la liste</button>
+</form>
+</div>
+  
+
+ 
+{% endblock %}

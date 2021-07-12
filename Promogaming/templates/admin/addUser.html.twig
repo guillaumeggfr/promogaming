@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+
+   
+
+<div class="ml-4">
+<div class="w-25 ">
+{{ form_start(form) }}
+
+{{form_row(form.username)}}
+{{form_row(form.roles)}}
+{{form_row(form.password)}}
+{{form_row(form.email)}}
+
+</div>
+<button class="btn btn-success">Valider</button>
+{{ form_end(form) }}
+<form method="GET" action="{{ path('admin_user_index') }}">
+    <button class="btn btn-info">Retour à la liste</button>
+</form>
+</div>
+{% endblock %}

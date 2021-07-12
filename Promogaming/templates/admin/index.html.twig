@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+<h2 class=" w-50 m-auto">LISTE DES UTILISATEURS</h1>
+
+
+    <form method="POST" action="{{ path('addUser') }}" class="w-50 m-auto">
+        <button class="btn btn-primary h3">Ajouter un utilisateur</button>
+    </form>
+
+<table class="table table-hover w-50 m-auto">
+
+  <tbody class="text-white h3">
+      {% for user in users %}
+
+        <tr>
+            <td class="w-50">{{ user.username }}</td>
+              <td class="d-flex">
+                
+                    <form method="GET" action="{{ path('ShowUser' , {'id': user.id} ) }}">
+                        <button class="btn btn-primary mr-2">Voir</button>
+                    </form>
+
+                    <form method="POST" action="{{ path('user_edit' , {'id': user.id} ) }}">
+                        <button class="btn btn-success mr-2">Modifier</button>
+                    </form>
+
+                    <form method="POST" action="{{ path('admin_user_delete', {'id': user.id}) }}" onsubmit="return confirm('Tu es certain de vouloir supprimer cet utilisateur?');">
+                        <button class="btn btn-danger mr-2">Supprimer</button>
+                    </form>
+
+              </td>
+        </tr>
+
+      {% endfor %}
+  </tbody>
+</table>
+
+
+{% endblock %}

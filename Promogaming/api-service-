@@ -1,0 +1,20 @@
+1 Definition contexte
+
+    Service igdbAPI propose diverses méthodes :
+        - getTokenAccess qui recupere via une requete le tocken d'accès nécessaire
+        a chaque requete (via twitch / oauth2)
+        - getAllTags qui recupere via une requete l'ensemble des tags disponible
+        sur igdb
+        - getAllGames qui recupere via une requete une page de jeu (60 entrées 
+        sauf derniere page), et log la page lu
+        prenant en paramètres : 
+            - $limit ; $offset ; [$fields] ; $token
+
+    1 Commande IgdbApiCommand :
+        - cette commande lit dans un premier temps le log de getAllGames.
+        - en deduire 
+
+
+
+PROBLEME RECUPERATION DATA JEU SUR Igdb
+J'ai 60G x 30p environ
