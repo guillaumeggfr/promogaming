@@ -23,40 +23,31 @@ class GameController extends AbstractController
     private $paginator;
     private $serializer;
     private $cache;
-    private $gameRepository;
-    private $plateformRepository;
-    private $tag;
-    private $page;
-    private $plateformId;
 
     public function __construct(
         PaginatorInterface $paginator,
         SerializerInterface $serializer,
-        CacheInterface $cache,
-        GameRepository $gameRepository,
-        PlateformGameRepository $plateformRepository
+        CacheInterface $cache
     ) {
         $this->paginator = $paginator;
         $this->serializer = $serializer;
         $this->cache = $cache;
-        $this->gameRepository = $gameRepository;
-        $this->plateformRepository = $plateformRepository;
     }
 
     /**
      * @Route("all", name="all", methods={"GET"})
      * Road for all games
      */
-    public function getAllGames(): Response
+    public function getAllGames(PlateformGameRepository $plateformRepository): Response
     {
         $games = $this->cache->get(
             'AllGames',
-            function (ItemInterface $item) {
+            function (ItemInterface $item) use ($plateformRepository) {
                 //Cache doesn't exist, i got to make request to my db to get content and insert into cache,
                 //then i'll be able to send the cache to the front website
                 $item->expiresAfter(43200);
                 return $this->serializer->serialize(
-                    ($this->plateformRepository->findBy(['isActive' => 1])),
+                    ($plateformRepository->findBy(['isActive' => 1])),
                     'json',
                     ['groups' => ['api_games_all']]
                 );
@@ -85,19 +76,18 @@ class GameController extends AbstractController
      * @Route("GameBytag/{id}", name="id", methods={"GET"})
      * Road for games by tag
      */
-    public function findbyTag(Tag $tag, Request $request): Response
+    public function findbyTag(Tag $tag, Request $request, GameRepository $gameRepository): Response
     {
-        $this->page = $request->query->get('page', 1);
-        $this->tag = $tag;
+        $page = $request->query->get('page', 1);
 
         $games = $this->cache->get(
             'gamesByTag-' . $tag->getId() . '-' . $this->page,
-            function (ItemInterface $item) {
+            function (ItemInterface $item) use ($tag, $page, $gameRepository){
                 //Cache doesn't exist, i got to make request to my db to get content and insert into cache,
                 //then i'll be able to send the cache to the front website
                 $item->expiresAfter(43200);
                 return $this->serializer->serialize(
-                    $this->paginator->paginate($this->gameRepository->findGamesByTag($this->tag), $this->page, 20),
+                    $this->paginator->paginate($gameRepository->findGamesByTag($tag), $page, 20),
                     'json',
                     ['groups' => ['api_games_bytag']]
                 );
@@ -114,17 +104,16 @@ class GameController extends AbstractController
      */
     public function getGamesbyPlateform( Request $request, $id): Response
     {
-        $this->page = $request->query->get((int)'page', 1);
-        $this->plateformId = $id;
+        $page = $request->query->get((int)'page', 1);
         //First i try to get the page from cache
         $games = $this->cache->get(
-            'gamesByPlateform-' . $this->plateformId . '-' . $this->page,
+            'gamesByPlateform-' . $id . '-' . $page,
             //Cache doesn't exist, i got to make request to my db to get content and insert into cache,
             //then i'll be able to send the datapage to the front website
-            function (ItemInterface $item) {
+            function (ItemInterface $item) use ($id, $page){
                 $item->expiresAfter(43200);
                 return $this->serializer->serialize(
-                    $this->paginator->paginate($this->plateformRepository->getGamesByPlateform($this->plateformId), $this->page, 20),
+                    $this->paginator->paginate($this->plateformRepository->getGamesByPlateform($id), $page, 20),
                     'json',
                     ['groups' => ['api_games_id']]
                 );
